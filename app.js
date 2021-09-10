@@ -16,10 +16,12 @@ mongoose.connection.on('err',()=>{
 });
 
 require('./models/user');       // this imports user scheme 
+require('./models/post'); 
 
 app.use(express.json());
 
-app.use(require('./routes/auth'))
+app.use(require('./routes/auth'));
+app.use(require('./routes/post'));
 
 app.listen(PORT,()=>{
     console.log(`server running on port ${PORT}`);

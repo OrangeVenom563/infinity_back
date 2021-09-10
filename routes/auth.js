@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
-const requireLogin = require('../controllers/requireLogin')
 
 router.get("/", (req, res) => {
   res.send("hello");
@@ -64,8 +63,5 @@ router.post('/signin',(req,res) => {
     })
 })
 
-router.get('/protected',requireLogin,(req,res)=>{
-    res.send("You have succesfully implemented JWT authentication");
-});
 
 module.exports = router;

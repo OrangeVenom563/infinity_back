@@ -1,8 +1,9 @@
 require('dotenv').config();
 const express = require('express');
-const app = express();
 const mongoose = require('mongoose');
+
 const PORT = 3000;
+const app = express();
 
 mongoose.connect(process.env.MONGO_URI);
 
@@ -14,9 +15,11 @@ mongoose.connection.on('err',()=>{
     console.log("Could'nt connect to mongoDb");
 });
 
-app.get('/',(req,res)=>{
-    res.send('Hello there')
-})
+require('./models/user');       // this imports user scheme 
+
+app.use(express.json());
+
+app.use(require('./routes/auth'))
 
 app.listen(PORT,()=>{
     console.log(`server running on port ${PORT}`);

@@ -5,9 +5,6 @@ const User = mongoose.model("User");
 const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
 
-router.get("/", (req, res) => {
-  res.send("hello");
-});
 
 router.post("/signup", (req, res) => {
   const { name, email, password } = req.body;
@@ -54,7 +51,7 @@ router.post('/signin',(req,res) => {
         .then(doMatch=>{
             if(doMatch){
                 const token = jwt.sign({_id:savedUser._id},process.env.JWT_SECRET);
-                res.json({token});
+                res.json({token,user:savedUser});
             }
             else{
                 return res.status(422).json({error:"Invalid Email or Password"})
@@ -62,6 +59,10 @@ router.post('/signin',(req,res) => {
         })
     })
 })
+
+router.get("/", (req, res) => {
+  res.send(req.user);
+});
 
 
 module.exports = router;

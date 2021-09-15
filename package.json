@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "npm start --prefix insta_front",
-    "start": "concurrently \"nodemon app.js\" \"npm run client\"",
+    "start": "node app.js",
     "dev": "concurrently \"nodemon app.js\" \"npm run client\""
   },
   "author": "lawrence J orangevenom",
@@ -14,6 +14,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "concurrently": "^6.2.1",
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",

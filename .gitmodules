@@ -1,0 +1,3 @@
+[submodule "insta_front"]
+	path = insta_front
+	url = https://github.com/OrangeVenom563/infinity_frontend

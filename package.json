@@ -5,13 +5,15 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "client": "npm start --prefix insta_front",
+    "start": "concurrently \"nodemon app.js\" \"npm run client\"",
+    "dev": "concurrently \"nodemon app.js\" \"npm run client\""
   },
   "author": "lawrence J orangevenom",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "concurrently": "^6.2.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",

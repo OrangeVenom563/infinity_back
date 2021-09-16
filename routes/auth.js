@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
+const requireLogin = require("../controllers/requireLogin");
 
 
 router.post("/signup", (req, res) => {
@@ -60,7 +61,7 @@ router.post('/signin',(req,res) => {
     })
 })
 
-router.get("/", (req, res) => {
+router.get("/",requireLogin,(req, res) => {
   res.send(req.user);
 });
 

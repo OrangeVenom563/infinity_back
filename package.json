@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "npm start --prefix insta_front",
-    "start": "node app.js",
+    "start": "nodemon app.js",
     "dev": "concurrently \"nodemon app.js\" \"npm run client\""
   },
   "author": "lawrence J orangevenom",

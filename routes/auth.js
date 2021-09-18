@@ -86,31 +86,21 @@ router.post("/reset-password", (req, res) => {
       user
         .save()
         .then((result) => {
-          console.log(result);
           return result;
         })
         .then((result) => {
-          console.log(user);
           sendSmtpEmail.subject = "Your Requested for Password reset" ;
           sendSmtpEmail.htmlContent = `<p>You requested for password reset</p> 
-          <h5>click in this <a href="http://localhost:3000/reset/${token}">link</a> to reset password</h5>`;
+          <h5>click in this <a href="https://cranky-bohr-49b41b.netlify.app/reset/${token}">link</a> to reset password</h5>`;
           sendSmtpEmail.sender = {
             name: "Infinity Support Team",
-            email: "somebody@support.com",
+            email: "DanVonJohn@infinity.com",
           };
           sendSmtpEmail.to = [{ email: user.email, name:user.name }];
           console.log(sendSmtpEmail);
           apiInstance.sendTransacEmail(sendSmtpEmail).then(
-            function (data) {
-              console.log(
-                "API called successfully. Returned data: " +
-                  JSON.stringify(data)
-              );
-            },
-            function (error) {
-              console.error(error);
-            }
-          );
+            function (data) {console.log("API called successfully ");},
+            function (error) {console.error(error)});
           res.json({ message: "check your email" });
         })
         .catch((err) => res.send({ error: err }));

@@ -21,14 +21,3 @@ router.get('/user/:id',(req,res)=>{
 })
 
 module.exports = router;
-
-// {
-//     Post.find({postedBy:req.params.id})
-//     .Populate("postedBy","_id name")
-//     .exec((err,posts)=>{
-//         if(err){
-//             return res.status(422).json({error:err})
-//         }
-//         res.json({user,posts})
-//     })
-// }
